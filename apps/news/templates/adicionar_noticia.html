@@ -1,0 +1,41 @@
+<!--{% extends "index.html" %}-->
+
+<!--{% block titulo %}-->
+<!--Cadastro de Turma-->
+<!--{% endblock titulo %}-->
+
+<!--{% block bread %}-->
+<!--Cadastro de Turma-->
+<!--{% endblock bread %}-->
+
+<!--{% load filtros %}-->
+
+<!--{% block pages %}-->
+<!--<form method="post">-->
+<!--    {% csrf_token %}-->
+<!--    <div class="form-col">-->
+<!--        <div class="form-group col-md-4 mb-0">-->
+<!--            {{ form.tur_turma.errors }}-->
+<!--            <label><strong>Turma: </strong></label>-->
+<!--            {{ form.tur_turma|addclass:'form-control' }}-->
+<!--        </div>-->
+
+<!--        <div class="form-group col-md-1 mb-0">-->
+<!--            {{ form.tur_ano.errors }}-->
+<!--            <label><strong>Ano: </strong></label>-->
+<!--            {{ form.tur_ano|addclass:'form-control' }}-->
+<!--        </div>-->
+
+<!--        <div class="form-group col-md-1 mb-0">-->
+<!--            {{ form.tur_status.errors }}-->
+<!--            <label><strong>Status: </strong></label>-->
+<!--            {{ form.tur_status|addclass:'form-control' }}-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <br>-->
+<!--    {% csrf_token %}-->
+<!--    <button class="btn btn-success" type="submit">Salvar</button>-->
+<!--    <a href="{{request.META.HTTP_REFERER}}" class="btn btn-primary">Voltar</a>-->
+
+<!--</form>-->
+<!--{% endblock pages %}-->

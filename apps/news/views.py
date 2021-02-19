@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from apps.news.models import Noticia
 
-def site(request):
-    template_name = 'site.html'
+def index(request):
+    template_name = 'index.html'
     publicacoes = Noticia.objects.all()
     pacote_de_dados = {
         'publicacoes': publicacoes

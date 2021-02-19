@@ -16,8 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from apps.news import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.site)
-]
+    path('', views.index)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+admin.AdminSite.site_header = 'SENAC NEWS Login'
+admin.AdminSite.site_title = 'Administração - sistema SENAC NEWS'
+admin.AdminSite.index_title = "Administração - SENAC NEWS"

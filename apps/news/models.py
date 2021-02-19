@@ -45,6 +45,6 @@ class Noticia(models.Model):
     class Meta:
         managed = True
         db_table = 'Noticia'
-        ordering = ['titulo']
+        ordering = ['-data_publicacao', 'categoria']
         verbose_name = 'Notícia'
         verbose_name_plural = 'Notícias'
