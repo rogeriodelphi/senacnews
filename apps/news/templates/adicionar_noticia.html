@@ -1,41 +1,60 @@
-<!--{% extends "index.html" %}-->
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block titulo %}
+    Cadastro de Notícias
+{% endblock titulo %}
 
-<!--{% block titulo %}-->
-<!--Cadastro de Turma-->
-<!--{% endblock titulo %}-->
+{% block bread %}
+    Cadastro de Notícias
+{% endblock bread %}
 
-<!--{% block bread %}-->
-<!--Cadastro de Turma-->
-<!--{% endblock bread %}-->
+{% block content %}
+<div class="album py-5 bg-light">
+    <div class="container">
+        <form id="form" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.titulo.errors }}
+                <label for="{{ form.titulo.id_for_label }}"><strong>Título:</strong></label>
+                {{ form.titulo | add_class:"form-control"|attr:"autofocus" }}
+            </div>
 
-<!--{% load filtros %}-->
+            <div class="form-group">
+                {{ form.texto.errors }}
+                <label for="{{ form.texto.id_for_label }}"><strong>Texto:</strong></label>
+                {{ form.texto | add_class:"form-control" }}
+            </div>
 
-<!--{% block pages %}-->
-<!--<form method="post">-->
-<!--    {% csrf_token %}-->
-<!--    <div class="form-col">-->
-<!--        <div class="form-group col-md-4 mb-0">-->
-<!--            {{ form.tur_turma.errors }}-->
-<!--            <label><strong>Turma: </strong></label>-->
-<!--            {{ form.tur_turma|addclass:'form-control' }}-->
-<!--        </div>-->
+            <div class="form-group">
+                {{ form.data_publicacao.errors }}
+                <label for="{{ form.data_publicacao.id_for_label }}"><strong>Data da Publicação:</strong></label>
+                {{ form.data_publicacao | add_class:"form-control" }}
+            </div>
+            <div class="form-group">
+                {{ form.categoria.errors }}
+                <label for="{{ form.categoria.id_for_label }}"><strong>Categoria:</strong></label>
+                {{ form.categoria | add_class:"form-control" }}
+            </div>
+            <div class="form-group">
+                {{ form.assunto.errors }}
+                <label for="{{ form.assunto.id_for_label }}"><strong>Assunto:</strong></label>
+                {{ form.assunto | add_class:"form-control" }}
+            </div>
+            <div class="form-group">
+                {{ form.autor.errors }}
+                <label for="{{ form.autor.id_for_label }}"><strong>Autor:</strong></label>
+                {{ form.autor | add_class:"form-control" }}
+            </div>
 
-<!--        <div class="form-group col-md-1 mb-0">-->
-<!--            {{ form.tur_ano.errors }}-->
-<!--            <label><strong>Ano: </strong></label>-->
-<!--            {{ form.tur_ano|addclass:'form-control' }}-->
-<!--        </div>-->
 
-<!--        <div class="form-group col-md-1 mb-0">-->
-<!--            {{ form.tur_status.errors }}-->
-<!--            <label><strong>Status: </strong></label>-->
-<!--            {{ form.tur_status|addclass:'form-control' }}-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <br>-->
-<!--    {% csrf_token %}-->
-<!--    <button class="btn btn-success" type="submit">Salvar</button>-->
-<!--    <a href="{{request.META.HTTP_REFERER}}" class="btn btn-primary">Voltar</a>-->
 
-<!--</form>-->
-<!--{% endblock pages %}-->
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-success">Cadastrar</button>
+                <button type="button" class="btn btn-warning">Salvar</button>
+                <button type="button" class="btn btn-danger">Excluir</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

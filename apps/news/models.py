@@ -35,7 +35,7 @@ class Noticia(models.Model):
     data_publicacao = models.DateField('Data da Publicação')
     categoria = models.CharField('Categoria', max_length=2, choices=CATEGORIA_CHOICES)
     assunto = models.CharField('Assunto', max_length=150)
-    autor = models.ForeignKey('Autor', on_delete=models.CASCADE, verbose_name='Autor')
+    autor = models.ForeignKey('Autor', on_delete=models.CASCADE)
     foto_publicacao = models.ImageField('Foto Publicação', upload_to='fotos_publicacoes', blank=True, null=True)
 
 
