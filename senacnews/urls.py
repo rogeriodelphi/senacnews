@@ -14,6 +14,9 @@ urlpatterns = [
     # http://127.0.0.1:8000/adicionar_noticia
     path('adicionar_noticia/', views.adicionar_noticia, name = 'adicionar_noticia'),
 
+    # http://127.0.0.1:8000/remover_noticia
+    path('remover_noticia/<int:id>/', views.remover_noticia, name = 'remover_noticia'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.AdminSite.site_header = 'SENAC NEWS Login'

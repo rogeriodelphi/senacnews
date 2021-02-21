@@ -32,7 +32,7 @@ class Noticia(models.Model):
     ]
     titulo = models.CharField('Titulo', max_length=150)
     texto = models.TextField('Texto')
-    data_publicacao = models.DateField('Data da Publicação')
+    data_publicacao = data_publicacao= models.DateTimeField(auto_now_add=True)
     categoria = models.CharField('Categoria', max_length=2, choices=CATEGORIA_CHOICES)
     assunto = models.CharField('Assunto', max_length=150)
     autor = models.ForeignKey('Autor', on_delete=models.CASCADE)

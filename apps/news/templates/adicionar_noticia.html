@@ -1,60 +1,78 @@
 {% extends "base.html" %}
+
 {% load widget_tweaks %}
+
 {% block titulo %}
     Cadastro de Notícias
 {% endblock titulo %}
 
 {% block bread %}
-    Cadastro de Notícias
+    <a href="{% url 'adicionar_noticia' %}"> Cadastro de Clientes</a>
 {% endblock bread %}
 
 {% block content %}
-<div class="album py-5 bg-light">
-    <div class="container">
-        <form id="form" method="POST">
-            {% csrf_token %}
-            <div class="form-group">
-                {{ form.titulo.errors }}
-                <label for="{{ form.titulo.id_for_label }}"><strong>Título:</strong></label>
-                {{ form.titulo | add_class:"form-control"|attr:"autofocus" }}
-            </div>
-
-            <div class="form-group">
-                {{ form.texto.errors }}
-                <label for="{{ form.texto.id_for_label }}"><strong>Texto:</strong></label>
-                {{ form.texto | add_class:"form-control" }}
-            </div>
-
-            <div class="form-group">
-                {{ form.data_publicacao.errors }}
-                <label for="{{ form.data_publicacao.id_for_label }}"><strong>Data da Publicação:</strong></label>
-                {{ form.data_publicacao | add_class:"form-control" }}
-            </div>
-            <div class="form-group">
-                {{ form.categoria.errors }}
-                <label for="{{ form.categoria.id_for_label }}"><strong>Categoria:</strong></label>
-                {{ form.categoria | add_class:"form-control" }}
-            </div>
-            <div class="form-group">
-                {{ form.assunto.errors }}
-                <label for="{{ form.assunto.id_for_label }}"><strong>Assunto:</strong></label>
-                {{ form.assunto | add_class:"form-control" }}
-            </div>
-            <div class="form-group">
-                {{ form.autor.errors }}
-                <label for="{{ form.autor.id_for_label }}"><strong>Autor:</strong></label>
-                {{ form.autor | add_class:"form-control" }}
-            </div>
-
-
-
-
-            <div class="mb-3">
-                <button type="submit" class="btn btn-success">Cadastrar</button>
-                <button type="button" class="btn btn-warning">Salvar</button>
-                <button type="button" class="btn btn-danger">Excluir</button>
-            </div>
-        </form>
+<div class="row">
+    <div class="col-12"></div>
+</div>
+<div class="card">
+    <div class="card-header">
+        <h2><i class="fa fa-users"></i> Cadastro de Notícias</h2>
+    </div>
+    <div class="card-body">
+        <table class="table" width="100%" cellspacing="0">
+            <form id="form" method="POST">
+                {% csrf_token %}
+                <div class="container">
+                    <div class="p-3 mb-2 bg-light text-dark">
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ form.titulo.errors }}
+                                <label for="{{ form.titulo.id_for_label }}"><strong>Título:</strong></label>
+                                {{ form.titulo | add_class:"form-control"|attr:"autofocus" }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                {{ form.categoria.errors }}
+                                <label for="{{ form.categoria.id_for_label }}"><strong>Categoria:</strong></label>
+                                {{ form.categoria | add_class:"form-control" }}
+                            </div>
+                            <div class="col-md-4">
+                                {{ form.assunto.errors }}
+                                <label for="{{ form.assunto.id_for_label }}"><strong>Assunto:</strong></label>
+                                {{ form.assunto | add_class:"form-control" }}
+                            </div>
+                            <div class="col-md-4">
+                                {{ form.autor.errors }}
+                                <label for="{{ form.autor.id_for_label }}"><strong>Autor:</strong></label>
+                                {{ form.autor | add_class:"form-control" }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                {{ form.texto.errors }}
+                                <label for="{{ form.texto.id_for_label }}"><strong>Texto:</strong></label>
+                                {{ form.texto | add_class:"form-control" }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="p-3 mb-2 bg-light text-dark">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-info"><i class="fa fa-plus"></i> Salvar</button>
+                                &nbsp;
+                                <button type="button" class="btn btn-primary" onClick="history.go(-1)">
+                                    <i class="fa fa-angle-double-left"></i> Voltar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </table>>
     </div>
 </div>
 {% endblock content %}

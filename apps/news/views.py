@@ -24,3 +24,14 @@ def adicionar_noticia(request):
         form = NoticiaForm()
         context = {'form': form}
         return render(request, template_name, context)
+
+
+def remover_noticia(request, id):
+    template_name = 'remover_noticia.html'
+    form = Noticia.objects.get(id=id)
+    context = {'form': form}
+    if request.method == 'POST':
+        form.delete()
+        return redirect('index')
+    return render(request, template_name, context)
+
