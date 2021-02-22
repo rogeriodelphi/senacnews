@@ -10,10 +10,19 @@ def index(request):
     }
     return render(request, template_name, pacote_de_dados)
 
+def listar_noticias(request):
+    # template_name = 'listar_noticias.html'
+    # noticias = Noticia.objects.all()
+    # context = {'noticias': noticias}
+    # return render(request, template_name, context)
+    context = {'noticias': Noticia.objects.all()}
+    return render(request, 'listar_noticias.html', context)
+
+
 def adicionar_noticia(request):
     template_name = 'adicionar_noticia.html'
     if request.method == "POST":
-        form = NoticiaForm(request.POST)
+        form = NoticiaForm(request.POST, request.FILES)
 
         if form.is_valid():
             form.save()

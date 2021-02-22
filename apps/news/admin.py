@@ -10,4 +10,4 @@ class AutorAdmin(admin.ModelAdmin):
 
 @admin.register(Noticia)
 class NoticiaAdmin(admin.ModelAdmin):
-    list_display = ('id', 'titulo', 'texto', 'data_publicacao', 'categoria', 'assunto', 'autor')
+    list_display = ('id', 'titulo', 'texto', 'data_publicacao', 'categoria', 'assunto', 'autor', 'foto_publicacao')

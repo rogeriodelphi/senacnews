@@ -32,12 +32,16 @@ class Noticia(models.Model):
     ]
     titulo = models.CharField('Titulo', max_length=150)
     texto = models.TextField('Texto')
-    data_publicacao = data_publicacao= models.DateTimeField(auto_now_add=True)
+    data_publicacao= models.DateTimeField(auto_now_add=True)
     categoria = models.CharField('Categoria', max_length=2, choices=CATEGORIA_CHOICES)
     assunto = models.CharField('Assunto', max_length=150)
     autor = models.ForeignKey('Autor', on_delete=models.CASCADE)
-    foto_publicacao = models.ImageField('Foto Publicação', upload_to='fotos_publicacoes', blank=True, null=True)
+    foto_publicacao = models.ImageField('Foto Publicação', upload_to='media/images/noticias', blank=True, null=True)
 
+    # @property
+    # def photo_url(self):
+    #     if self.foto_publicacao and hasattr(self.foto_publicacao, 'url'):
+    #         return self.foto_publicacao.url
 
     def __str__(self):
         return self.titulo

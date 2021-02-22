@@ -7,7 +7,7 @@
 {% endblock titulo %}
 
 {% block bread %}
-    <a href="{% url 'adicionar_noticia' %}"> Cadastro de Clientes</a>
+    <a href="{% url 'news:adicionar_noticia' %}"> Cadastro de Clientes</a>
 {% endblock bread %}
 
 {% block content %}
@@ -20,7 +20,7 @@
     </div>
     <div class="card-body">
         <table class="table" width="100%" cellspacing="0">
-            <form id="form" method="POST">
+            <form id="form" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="container">
                     <div class="p-3 mb-2 bg-light text-dark">
@@ -50,23 +50,33 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group">
                                 {{ form.texto.errors }}
                                 <label for="{{ form.texto.id_for_label }}"><strong>Texto:</strong></label>
                                 {{ form.texto | add_class:"form-control" }}
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="p-3 mb-2 bg-light text-dark">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <button type="submit" class="btn btn-info"><i class="fa fa-plus"></i> Salvar</button>
-                                &nbsp;
-                                <button type="button" class="btn btn-primary" onClick="history.go(-1)">
-                                    <i class="fa fa-angle-double-left"></i> Voltar
-                                </button>
+                        <div class="container">
+                            <div class="p-3 mb-2 bg-light text-dark">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        {{ form.foto_publicacao.errors }}
+                                        <label for="{{ form.foto_publicacao.id_for_label }}"><strong>Foto:</strong></label>
+                                        {{ form.foto_publicacao|add_class:'form-control' }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="p-3 mb-2 bg-light text-dark">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-info"><i class="fa fa-plus"></i> Salvar</button>
+                                        &nbsp;
+                                        <button type="button" class="btn btn-primary" onClick="history.go(-1)">
+                                            <i class="fa fa-angle-double-left"></i> Voltar
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
