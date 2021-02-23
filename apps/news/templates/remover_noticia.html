@@ -10,21 +10,33 @@ Exclusão de Notícia
 {% endblock bread %}
 
 {% block content %}
-
-<div class="card">
-    <div class="card-header"><h4>Deseja realmente excluir essa publicação? </h4><br>
-        <h6><strong>Id:</strong> {{ form.id }}</h6>
-        <h6><strong>Titulo:</strong> {{ form.titulo }}</h6>
-        <h6><strong>Texto:</strong> {{ form.texto | truncatewords_html:30 }}</h6>
-        <h6><strong>Data da Publicação:</strong> {{ form.data_publicacao | date:'d/m/Y' }}</h6>
-        <br>
-
-        <form method="POST">
-            {% csrf_token %}
-            <button class="btn btn-danger" type="submit">Remover </button>
-            <a href="{% url 'index' %}" class="btn btn-primary">Cancelar</a><br>
-        </form>
+<div class="row">
+    <div class="col-12 p-1"></div>
+</div>
+<div class="container">
+    <div class="card mb-3" >
+        <div class="card-header">
+            <h2><i class="fa fa-trash" ></i> Remover Notícia</h2>
+        </div>
+        <div class="card-body">
+            <div class="card-header"><h4>Deseja realmente excluir essa publicação? </h4><br>
+                <h6><strong>Id:</strong> {{ form.id }}</h6>
+                <h6><strong>Titulo:</strong> {{ form.titulo }}</h6>
+                <h6><strong>Categoria: </strong>{{ form.get_categoria_display }}</h6>
+                <h6><strong>Texto:</strong> <i>{{ form.texto | truncatewords_html:30 }}</i></h6>
+                <h6><strong>Autor:</strong> {{ form.autor }}</h6>
+                <h6><strong>Data da Publicação:</strong> {{ form.data_publicacao | date:'d/m/Y' }}</h6>
+                <br>
+            </div>
+        </div>
     </div>
-
+    <div class="col-12 card mb-3">
+        <div class="card-header">
+            <form method="POST">
+                <button class="btn btn-danger" type="submit">Remover </button>
+                <a href="{% url 'news:listar_noticias' %}" class="btn btn-primary">Cancelar</a><br>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock content %}

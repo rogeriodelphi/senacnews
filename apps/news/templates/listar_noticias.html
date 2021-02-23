@@ -10,69 +10,60 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-12">
-    </div>
+    <div class="col-12 p-1"></div>
 </div>
-<div class="card mb-3">
-    <div class="card-header">
-        <h2><i class="fa fa-list"> Listagem de Notícias</i></h2>
+<div class="container">
+    <div class="card mb-3">
+        <div class="card-header">
+            <h2><i class="fa fa-list"> Listagem de Notícias</i></h2>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Título</th>
+                            <th>Texto</th>
+                            <th>Categoria</th>
+                            <th>Assunto</th>
+                            <th>Autor</th>
+                            <th>Data Publicação</th>
+                            <th>Foto</th>
+                            <th>Opções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for noticia in noticias %}
+                        <tr>
+                            <td>{{ noticia.id }}</td>
+                            <td>{{ noticia.titulo }}</td>
+                            <td>{{ noticia.texto | truncatewords_html:20 }}</td>
+                            <td>{{ noticia.categoria }}</td>
+                            <td>{{ noticia.assunto }}</td>
+                            <td>{{ noticia.autor }}</td>
+                            <td>{{ noticia.data_publicacao | date:'d/m/Y' }}</td>
+                            <td><img src="/media/{{ noticia.foto_publicacao}}" class="img-responsive rounded-circle" height="40px"></td>
+                            <td>
+                                <a href="{% url 'news:editar_noticia' noticia.id %}">
+                                    <i class="fa fa-pencil-square" aria-hidden="true" style="color: #6B8E23;"></i>
+                                </a>
+                                <a href="{% url 'news:remover_noticia' noticia.id %}">
+                                    <i class="fa fa-trash" aria-hidden="true" style="color: red;"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Título</th>
-                    <th>Texto</th>
-                    <th>Categoria</th>
-                    <th>Assunto</th>
-                    <th>Autor</th>
-                    <th>Data Publicação</th>
-                    <th>Foto</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for noticia in noticias %}
-                <tr>
-                    <td>{{ noticia.id }}</td>
-                    <td>{{ noticia.titulo }}</td>
-                    <td>{{ noticia.texto }}</td>
-                    <td>{{ noticia.categoria }}</td>
-                    <td>{{ noticia.assunto }}</td>
-                    <td>{{ noticia.autor }}</td>
-                    <td>{{ noticia.data_publicacao | date:'d/m/Y' }}</td>
-                    <td><img src="{{ noticia.foto_publicacao}}" class="img-responsive"></td>
-                    <td>
-                        <a href="#">
-                            <i class="fa fa-pencil-square" aria-hidden="true" style="color: #6B8E23;"></i>
-                        </a>
-                        <a href="{% url 'news:remover_noticia' noticia.id %}">
-                            <i class="fa fa-trash" aria-hidden="true" style="color: red;"></i>
-                        </a>
-                    </td>
-                </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-            <ul>
-                {% if noticias.count > 0 %}
-                {% for noticia in noticias %}
-                <li>
-                    <img src="{{ noticia.imagem.url }}">
-                </li>
-                {% endfor %}
-                {% else %}
-                <h3>Sem notícias ainda</h3>
-                {% endif %}
-
-            </ul>
+    <div class="col-12 card mb-3">
+        <div class="card-header">
+            <a href="{% url 'news:adicionar_noticia' %}"><button class="btn btn-success">Cadastrar</button></a>
         </div>
     </div>
 </div>
-<div class="col-12 card mb-3">
-    <div class="card-header">
-        <a href="{% url 'news:adicionar_noticia' %}"><button class="btn btn-success">Cadastrar</button></a>
-    </div>
-</div>
+
 {% endblock content %}
